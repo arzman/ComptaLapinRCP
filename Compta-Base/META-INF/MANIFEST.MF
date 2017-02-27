@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Compta-Base
+Bundle-SymbolicName: Compta-Base;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: compta.base.Activator
+Require-Bundle: org.eclipse.ui;visibility:=reexport,
+ org.eclipse.core.runtime;visibility:=reexport,
+ org.eclipse.ui.views.log;bundle-version="1.0.400";visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Export-Package: compta.base
+Bundle-ClassPath: icons/,
+ .
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

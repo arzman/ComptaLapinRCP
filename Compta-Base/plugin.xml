@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="compta.base.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="RCP Perspective"
+            class="compta.base.Perspective"
+            id="Compta-Base.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               id="compta.file"
+               label="File">
+            <menu
+                  id="admin"
+                  label="Admin">
+               <command
+                     commandId="org.eclipse.ui.window.resetPerspective"
+                     style="push">
+               </command>
+               <command
+                     commandId="org.eclipse.ui.views.showView"
+                     style="push">
+               </command>
+            </menu>
+            <command
+                  commandId="org.eclipse.ui.file.exit"
+                  label="Sortir"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="Compta-Base.application"
+            name="compta_produit">
+         <property
+               name="windowImages"
+               value="icons/rabbit.gif">
+         </property>
+         <property
+               name="appName"
+               value="compta_produit">
+         </property>
+      </product>
+   </extension>
+
+</plugin>
