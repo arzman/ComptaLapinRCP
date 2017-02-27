@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="true"
+            class="compta.core.presentation.views.CompteView"
+            icon="icons/compte_icon.jpg"
+            id="Compta.view.CompteView"
+            name="Compte"
+            restorable="true">
+      </view>
+      <view
+            allowMultiple="true"
+            class="compta.core.presentation.views.BudgetView"
+            icon="icons/budget_icon.png"
+            id="Compta.view.BudgetView"
+            name="Budgets"
+            restorable="true">
+      </view>
+      <view
+            allowMultiple="true"
+            class="compta.core.presentation.views.ExerciceView"
+            icon="icons/trimestre_icon.png"
+            id="Compta.view.ExerciceView"
+            name="Trimestre"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               label="Trimestre">
+            <command
+                  commandId="Compta.command.creertrimestre"
+                  label="Créer un trimestre"
+                  style="push">
+            </command>
+            <command
+                  commandId="Compta.command.settrimestre"
+                  label="Sélectionner le trimestre courant"
+                  style="push">
+            </command>
+            <command
+                  commandId="Compta.command.managetrimestre"
+                  label="Gérer les trimestres"
+                  style="push">
+            </command>
+            <command
+                  commandId="Compta.command.editertrimestremodel"
+                  label="Configurer"
+                  style="push">
+            </command>
+         </menu>
+         <menu
+               label="Compte">
+            <command
+                  commandId="Compta.command.ajouteruncompte"
+                  style="push">
+            </command>
+         </menu>
+         <menu
+               label="Budget">
+            <command
+                  commandId="Compta.command.ajouterunbudget"
+                  label="Ajouter un budget"
+                  style="push">
+            </command>
+            <command
+                  commandId="Compta.command.configurerbudget"
+                  label="Trier les budgets"
+                  style="push">
+            </command>
+         </menu>
+         <menu
+               label="Outils">
+            <menu
+                  label="Statistiques">
+               <command
+                     commandId="Compta.command.statmensuelle"
+                     label="Dépenses Mensuelles"
+                     style="push">
+               </command>
+               <command
+                     commandId="Compta.command.statannuelle"
+                     label="Dépenses Annuelles"
+                     style="push">
+               </command>
+            </menu>
+            <menu
+                  label="Synthèse">
+               <command
+                     commandId="Compta.command.synthese.depense.annuelle"
+                     style="push">
+               </command>
+            </menu>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:Compta.view.CompteView">
+         <command
+               commandId="Compta.command.ajouteruncompte"
+               icon="icons/add_icon.gif"
+               mode="FORCE_TEXT"
+               style="push"
+               tooltip="Ajouter un compte">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:Compta.view.ExerciceView">
+         <command
+               commandId="Compta.command.creertrimestre"
+               icon="icons/add_icon.gif"
+               label="Créer un trimestre"
+               style="push">
+         </command>
+         <command
+               commandId="Compta.command.settrimestre"
+               icon="icons/select_icon.gif"
+               label="Selectionner le trimestre courant"
+               style="push"
+               tooltip="Sélectionner le trimestre courant">
+         </command>
+         <command
+               commandId="Compta.command.editertrimestremodel"
+               icon="icons/config_icon.png"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:Compta.view.BudgetView">
+         <command
+               commandId="Compta.command.ajouterunbudget"
+               icon="icons/add_icon.gif"
+               label="Ajouter un budget"
+               style="push"
+               tooltip="Ajouter un budget">
+         </command>
+         <command
+               commandId="Compta.command.configurerbudget"
+               icon="icons/config_icon.png"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:compta.file?after=admin">
+         <menu
+               label="Sauver">
+            <command
+                  commandId="Compta.command.forcesauvegarde"
+                  label="Sauvegarder"
+                  style="push">
+            </command>
+            <command
+                  commandId="Compta.command.exportdata"
+                  label="Exporter"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="compta.core.presentation.handlers.handler.CreateCompteHandler"
+            id="Compta.command.ajouteruncompte"
+            name="Ajouter un compte">
+      </command>
+      <command
+            defaultHandler="compta.core.presentation.handlers.action.trimestre.SelectTrimestreAction"
+            id="Compta.command.settrimestre"
+            name="Sélectionner le trimestre">
+      </command>
+      <command
+            defaultHandler="compta.core.presentation.handlers.action.trimestre.CreerTrimestreAction"
+            id="Compta.command.creertrimestre"
+            name="Créer un trimestre">
+      </command>
+      <command
+            defaultHandler="compta.core.presentation.handlers.handler.EditTrimestreTemplateHandler"
+            id="Compta.command.editertrimestremodel"
+            name="Configurer trimestre template">
+      </command>
+      <command
+            defaultHandler="compta.core.presentation.handlers.handler.CreateBudgetHandler"
+            id="Compta.command.ajouterunbudget"
+            name="Ajouter un budget">
+      </command>
+      <command
+            defaultHandler="compta.core.presentation.handlers.handler.TrierBudgetHandler"
+            id="Compta.command.configurerbudget"
+            name="Trier les budgets">
+      </command>
+      <command
+            defaultHandler="compta.core.presentation.handlers.handler.ForceSaveHandler"
+            id="Compta.command.forcesauvegarde"
+            name="Forcer la sauvegarde">
+      </command>
+      <command
+            defaultHandler="compta.core.presentation.handlers.handler.ExportContextHandler"
+            id="Compta.command.exportdata"
+            name="Exporter">
+      </command>
+      <command
+            defaultHandler="compta.core.presentation.handlers.handler.ManageTrimestreHandler"
+            id="Compta.command.managetrimestre"
+            name="Gérer les trimestres">
+      </command>
+      <command
+            defaultHandler="compta.core.presentation.handlers.handler.DepenseMensuelleStatHandler"
+            id="Compta.command.statmensuelle"
+            name="Dépenses Mensuelles">
+      </command>
+      <command
+            defaultHandler="compta.core.presentation.handlers.handler.DepenseAnnuelleStatHandler"
+            id="Compta.command.statannuelle"
+            name="Dépenses Annuelles">
+      </command>
+      <command
+            defaultHandler="compta.core.presentation.handlers.handler.DepenseAnnuelleSynthHandler"
+            id="Compta.command.synthese.depense.annuelle"
+            name="Synthèse dépenses annuelle">
+      </command>
+   </extension>
+
+</plugin>
